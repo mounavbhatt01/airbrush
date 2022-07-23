@@ -5,6 +5,7 @@ import pyvirtualcam
 
 Img=cv2.imread('1.png')
 Img = cv2.flip(Img,1)
+Img = cv2.cvtColor(Img, cv2.COLOR_BGR2RGB)
 
 cap=cv2.VideoCapture(0)
 
@@ -44,7 +45,7 @@ with pyvirtualcam.Camera(width=1280, height=720, fps=30) as cam:
                 xp, yp = 0, 0
                 print("selection")
                 if y1<125:
-                    if x1<150: 
+                    if x1<250: 
                         flag = not flag
                     elif 250<x1<450:
                         drawColor=(255,0,255)
@@ -93,7 +94,7 @@ with pyvirtualcam.Camera(width=1280, height=720, fps=30) as cam:
 
 
         
-        
+        # img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
         # cv2.imshow('Image',img)
         # cv2.waitKey(1)
 
