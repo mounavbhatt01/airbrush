@@ -69,13 +69,6 @@ with pyvirtualcam.Camera(width=1280, height=720, fps=30) as cam:
                     cv2.line(imgCanvas, (xp, yp), (x1, y1), drawColor, brushthickness)
                     xp,yp=x1,y1
 
-                    # if drawColor==(0,0,0):
-                    #     cv2.line(img, (xp, yp), (x1, y1), drawColor,50)
-                    #     cv2.line(imgCanvas, (xp, yp), (x1, y1), drawColor, 50)
-                    # else:
-                    #     cv2.line(img,(xp,yp),(x1,y1),drawColor,brushthickness)
-                    #     cv2.line(imgCanvas, (xp, yp), (x1, y1), drawColor, brushthickness)
-                    # xp,yp=x1,y1
             
             if fingers[0] and fingers[1] and fingers[2] and fingers[3] and fingers[4]:
                 imgCanvas = np.zeros((720, 1280, 3), np.uint8)
@@ -93,10 +86,10 @@ with pyvirtualcam.Camera(width=1280, height=720, fps=30) as cam:
         img[0:125,0:1280]=Img
 
 
-        
-        # img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
-        # cv2.imshow('Image',img)
-        # cv2.waitKey(1)
+        img=cv2.flip(img,1)
+        img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+        cv2.imshow('Image',img)
+        cv2.waitKey(1)
 
-        cam.send(img)
-        cam.sleep_until_next_frame()
+        # cam.send(img)
+        # cam.sleep_until_next_frame()
